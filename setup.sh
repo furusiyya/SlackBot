@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Navigate to the SlackBot project directory
-cd SlackBot
-
 # Update and install Python3 and pip
 echo "Updating system and installing Python3 and pip..."
 sudo apt update
@@ -20,4 +17,19 @@ source venv/bin/activate
 echo "Installing dependencies from requirements.txt..."
 pip install -r requirements.txt
 
-echo "Setup completed. Virtual environment is ready, and dependencies are installed."
+# Downloading and installing ngrok
+echo "Downloading ngrok..."
+sudo apt install wget unzip
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+
+echo "Unzipping ngrok..."
+unzip ngrok-stable-linux-amd64.zip
+
+# JQ will be used to extract ngrok http tunner URL latter
+sudo apt-get install jq
+
+# Clean up the zip file
+echo "Cleaning up..."
+rm ngrok-stable-linux-amd64.zip
+
+echo "Setup completed. Virtual environment is ready, dependencies are installed, and ngrok is set up."

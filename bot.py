@@ -81,7 +81,7 @@ def send_survey(channel_id):
 
 def schedule_send_survey():
     """Schedules the survey to be sent every minute."""
-    schedule.every().second.do(send_survey, channel_id=CHANNEL_ID)
+    schedule.every().minute.do(send_survey, channel_id=CHANNEL_ID)
     while True:
         schedule.run_pending()
         time.sleep(1)
